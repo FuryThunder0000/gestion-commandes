@@ -1,64 +1,140 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>@yield('title')</title>
-      <link rel="stylesheet" href="{{asset('bootstrap/bootstrap.min.css')}}">
-      <link rel="stylesheet" href="{{asset('style.css')}}">
-
-       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/logos/favicon.png')}}" />
+      <link rel="stylesheet" href="{{asset('assets/css/styles.min.css')}}" />
 </head>
 
 <body>
-      <div id="page">
-            
-            <div class="feature">
-                  <div class="feature-inner">
-                        <h1>@yield('heading','Welcome')</h1>
+      <!--  Body Wrapper -->
+      <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+            <!-- Sidebar Start -->
+            <aside class="left-sidebar">
+                  <!-- Sidebar scroll-->
+                  <div>
+                        <div class="brand-logo d-flex align-items-center justify-content-between">
+                              <a href="/" class="text-nowrap logo-img">
+                                    <h4>Gestion Commandes</h4>
+                              </a>
+                        </div>
+                        <!-- Sidebar navigation-->
+                        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                              <ul id="sidebarnav">
+                                    <li class="nav-small-cap">
+                                          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                          <span class="hide-menu">Pages</span>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a class="sidebar-link" href="{{route('clients.index')}}" aria-expanded="false">
+                                                
+                                                <span class="hide-menu">Clients</span>
+                                          </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a class="sidebar-link" href="{{route('produits.index')}}" aria-expanded="false">
+                                                
+                                                <span class="hide-menu">Produits</span>
+                                          </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a class="sidebar-link" href="{{route('commandes.index')}}" aria-expanded="false">
+                                                
+                                                <span class="hide-menu">Commandes</span>
+                                          </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a class="sidebar-link" href="{{route('commandeProduits.index')}}" aria-expanded="false">
+                                                
+                                                <span class="hide-menu">Associer Commandes</span>
+                                          </a>
+                                    </li>
+                                    <li class="nav-small-cap">
+                                          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                          <span class="hide-menu">Recherche</span>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a href="{{route('recherche.commandes_par_client')}}" class="sidebar-link fs-2">
+                                                
+                                                <span class="hide-menu">Commandes</span>
+                                          </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a href="{{route('recherche.nombre_commandes_par_client')}}" class="sidebar-link fs-2">
+                                                
+                                                <span class="hide-menu">Nombre Commandes</span>
+                                          </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a href="{{route('recherche.total_commandes_valides')}}" class="sidebar-link fs-2">
+                                                
+                                                <span class="hide-menu">Commandes validé</span>
+                                          </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a href="{{route('recherche.produits_par_categorie')}}" class="sidebar-link fs-2">
+                                                
+                                                <span class="hide-menu">Produits par categorie</span>
+                                          </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a href="{{route('recherche.commandes_produits_par_client_View')}}" class="sidebar-link fs-2">
+                                                
+                                                <span class="hide-menu">Commandes par clients</span>
+                                          </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                          <a href="{{route('recherche.commandes_produits_par_annee_View')}}" class="sidebar-link fs-2">
+                                                
+                                                <span class="hide-menu">Commandes par annee</span>
+                                          </a>
+                                    </li>
+
+                              </ul>
+
+                        </nav>
+                        <!-- End Sidebar navigation -->
                   </div>
-            </div>
+                  <!-- End Sidebar scroll-->
+            </aside>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                  <!--  Header Start -->
+                  <header class="app-header">
+                        <nav class="navbar navbar-expand-lg navbar-light">
 
-
-            <div id="content">
-                  <div id="content-inner">
-
-                        <main id="contentbar">
-                              @yield('content')
-                        </main>
-                        @yield('back')
-
-                        <nav id="sidebar">
-                              <div class="widget">
-                                    <h3>Navigation</h3>
-                                    <ul>
-                                          <li><a href="/">Home</a></li>
-                                          <li><a href="{{route('clients.index')}}">Clients</a></li>
-                                          <li><a href="{{route('produits.index')}}">Prodits</a></li>
-                                          <li><a href="{{route('commandes.index')}}">Commandes</a></li>
-                                          <li><a href="{{route('commandeProduits.index')}}">Affectation Commandes</a></li>
+                              <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                                    <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                                          <li class="nav-item dropdown">
+                                                <div class="message-body">
+                                                      <form action="{{route('auth.logout')}}" method="post">
+                                                            @csrf
+                                                            <button type="submit" class="col-10 btn btn-outline-primary mx-3 mt-2 d-block">Se deconnecter</button>
+                                                      </form>
+                                                </div>
+                                          </li>
                                     </ul>
                               </div>
                         </nav>
+                  </header>
+                  <!--  Header End -->
+                  <div class="container-fluid">
 
-                        <div class="clr"></div>
+                        @yield('content')
                   </div>
             </div>
-
-            <footer id="footer">
-                  <div id="footer-inner">
-                        <p>&copy; Copyright <a href="#">by Anas Falah</a> &#124; <a href="#">2024</a> &#124;</p>
-                        <div class="clr"></div>
-                  </div>
-            </footer>
       </div>
-      <script src="{{asset('bootstrap/bootstrap.min.js')}}"></script>
+      <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
+      <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+      <script src="{{asset('assets/js/sidebarmenu.js')}}"></script>
+      <script src="{{asset('assets/js/app.min.js')}}"></script>
+      <script src="{{asset('assets/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
+      <script src="{{asset('assets/libs/simplebar/dist/simplebar.js')}}"></script>
+      <script src="{{asset('assets/js/dashboard.js')}}"></script>
 </body>
 
 </html>
